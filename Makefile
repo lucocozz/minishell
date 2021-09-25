@@ -6,7 +6,7 @@
 #    By: lucocozz <lucocozz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 14:51:42 by rotrojan          #+#    #+#              #
-#    Updated: 2021/09/25 23:51:47 by rotrojan         ###   ########.fr        #
+#    Updated: 2021/09/26 00:35:39 by rotrojan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,9 +58,9 @@ RM = rm -f
 MKDIR = mkdir -p
 DEBUG = off
 
-CFLAGS = -MMD -MP -Wall -Wextra -Werror
+CFLAGS = -MMD -Wall -Wextra -Werror
 ifeq ($(DEBUG), on)
-	CXXFLAGS += -g3 -fsanitize=address
+	CFLAGS += -g3 -fsanitize=address
 endif
 LDFLAGS = $(LIBS:%=-L lib%) $(LIBS:%=-l%) -lncurses
 
@@ -74,7 +74,7 @@ all: libs
 	@$(MAKE) $(NAME)
 
 $(NAME): $(OBJS) libft/libft.a libgc/libgc.a
-	@printf 'linking %s\n' '$@'
+	@printf '\nlinking %s\n' '$@'
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LDFLAGS)
 	@cat .ascii_art
 

@@ -15,7 +15,7 @@ CC= clang
 MKDIR= mkdir -p
 RM= rm -f
 
-CFLAGS= -Wall -Wextra -Werror -MMD -MP
+CFLAGS= -Wall -Wextra -Werror -MMD
 CXXFLAGS= -I includes
 
 vpath %.c sources 

@@ -38,7 +38,7 @@ CC= clang
 MKDIR= mkdir -p
 RM= rm -f
 
-CFLAGS= -Wall -Wextra -Werror -MMD -MP
+CFLAGS= -Wall -Wextra -Werror -MMD
 CXXFLAGS= -I includes $(INCLUDES_DIR:%=-I ../%)
 
 vpath %.c integer file string memory file system list string/format string/format/convert_types
