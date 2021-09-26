@@ -6,7 +6,7 @@
 /*   By: lucocozz <lucocozz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 00:30:31 by rotrojan          #+#    #+#             */
-/*   Updated: 2021/09/08 20:38:28 by lucocozz         ###   ########.fr       */
+/*   Updated: 2021/09/26 02:25:01 by rotrojan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ bool	parse_pipeline(t_token **tok_lst, t_node **ast)
 	{
 		eat_token(tok_lst);
 		if (*tok_lst == NULL)
+		{
+			ft_dprintf(STDERR_FILENO,
+				"\nminishell: syntax error: unexpected end of file");
 			return (false);
+		}
 		pipe_node = NULL;
 		pipe_node = gc_malloc(sizeof(*pipe_node));
 		ft_bzero(pipe_node, sizeof(*pipe_node));

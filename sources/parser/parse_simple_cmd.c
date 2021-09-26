@@ -6,7 +6,7 @@
 /*   By: lucocozz <lucocozz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 20:07:41 by rotrojan          #+#    #+#             */
-/*   Updated: 2021/09/22 17:57:25 by rotrojan         ###   ########.fr       */
+/*   Updated: 2021/09/26 02:01:29 by rotrojan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ bool	parse_simple_cmd(t_token **tok_lst, t_node **ast)
 {
 	t_node	*simple_cmd;
 
-	if ((*tok_lst)->type == Oparenth_tok)
+	if (is_parenthesis((*tok_lst)->type) == true)
 		return (parse_parenthesis(tok_lst, ast));
 	if (is_leaf((*tok_lst)->type) == false)
 		return (false);

@@ -6,7 +6,7 @@
 /*   By: lucocozz <lucocozz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 13:59:25 by rotrojan          #+#    #+#             */
-/*   Updated: 2021/09/26 01:00:02 by rotrojan         ###   ########.fr       */
+/*   Updated: 2021/09/26 02:20:33 by rotrojan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,16 @@ bool	build_ast(t_token **tok_lst, t_node **ast)
 	bool		ret;
 
 	ret = true;
-	while (*tok_lst != NULL && (*tok_lst)->type != Cparenth_tok)
+	while (*tok_lst != NULL)
 	{
 		if (is_leaf((*tok_lst)->type) == false
-			&& (*tok_lst)->type != Oparenth_tok)
+			&& is_parenthesis((*tok_lst)->type) == false)
 		{
 			if (*ast == NULL)
-				
+				ft_dprintf(STDERR_FILENO,
+					"\nminishell: syntax error near unexpected token `%s'",
+					(*tok_lst)->data);
 			ret = parse_logical_operator(tok_lst, ast);
-		ft_dprintf(STDERR_FILENO,
-			"\nminishell: syntax error near unexpected token `%s'",
-			(*tok_lst)->data);
 		}
 		else
 			ret = parse_pipeline(tok_lst, ast);
